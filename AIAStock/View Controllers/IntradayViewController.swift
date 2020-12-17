@@ -12,6 +12,7 @@ final class IntradayViewController: UIViewController, Alertable {
     @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.register(UINib(nibName: "IntradayTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+            tableView.isScrollEnabled = false
         }
     }
     @IBOutlet var sortByButton: UIButton! {
