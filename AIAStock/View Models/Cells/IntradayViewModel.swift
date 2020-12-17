@@ -28,6 +28,7 @@ struct IntradayViewModel {
     
     static func formatDateString(dateString: String) -> String {
         IntradayViewModel.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        IntradayViewModel.dateFormatter.locale = Locale(identifier: "en_US")
         let formattedDate = IntradayViewModel.dateFormatter.date(from: dateString)
         IntradayViewModel.dateFormatter.dateFormat = "dd MMM, YYYY HH:mm:ss"
         return (formattedDate != nil) ? IntradayViewModel.dateFormatter.string(from: formattedDate!) : "--"

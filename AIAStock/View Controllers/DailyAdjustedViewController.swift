@@ -51,6 +51,8 @@ class DailyAdjustedViewController: UIViewController {
     }
     
     @objc private func didChangeText(_ textField: UITextField) {
+        textField.text = textField.text?.uppercased()
+
         if viewModel.isEntryValid(texts: [firstSymbolField.text, secondSymbolField.text, thirdSymbolField.text]) {
             isCompareButtonActive = true
         } else {

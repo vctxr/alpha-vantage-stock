@@ -33,6 +33,7 @@ final class IntradayViewController: UIViewController, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar(placeholder: "Search for symbol", delegate: self)
+        navigationItem.searchController?.searchBar.searchTextField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
         viewModel.delegate = self
         viewModel.fetchIntraday()
     }
@@ -51,6 +52,10 @@ final class IntradayViewController: UIViewController, Alertable {
         presentAlertSheet(title: "Sort your results by:", message: nil, selectedIndex: viewModel.selectedSort.rawValue) { [weak self] sort in
             self?.viewModel.sortIntraday(by: sort)
         }
+    }
+    
+    @objc private func didChangeText(_ textField: UITextField) {
+        textField.text = textField.text?.uppercased()
     }
 }
 
@@ -78,6 +83,8 @@ extension IntradayViewController: IntradayListViewModelDelegate {
     }
 }
 
+
+// MARK: - Search Bar Delegate
 
 extension IntradayViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

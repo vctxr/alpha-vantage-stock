@@ -28,7 +28,7 @@ struct DailyAdjustedViewModel {
             dateTimeTemp = DailyAdjustedViewModel.formatDateString(dateString: data.dateTime)
         }
         
-        symbols.forEach { symbolTemp.append($0) }
+        symbols.forEach { symbolTemp.append($0.uppercased()) }
         
         symbol = symbolTemp
         open = openTemp
